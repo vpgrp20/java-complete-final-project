@@ -24,5 +24,5 @@ public class Doctor {
     private int id;
     private String name;
     @Enumerated(EnumType.STRING)
-    private Specializare specializare;
+    private SpecialtyProfile specialtyProfile;
 }
