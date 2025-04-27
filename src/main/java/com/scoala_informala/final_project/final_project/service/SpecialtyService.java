@@ -13,7 +13,13 @@ public class SpecialtyService {
 
     private final SpecialtyRepository specialtyRepository;
 
-    public List<Specialty> getAllSpecializations() {
+    public List<Specialty> getAllSpecialties() {
         return specialtyRepository.findAll();
+    }
+
+    public void addSpecialty(Specialty specialty) {
+        if (specialtyRepository.findBySpecialtyName(specialty.getSpecialtyName()) == null) {
+            specialtyRepository.save(specialty);
+        }
     }
 }
