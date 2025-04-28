@@ -19,7 +19,7 @@ public class SpecialtyController {
 
     private final SpecialtyService specialtyService;
 
-    @GetMapping("/create")
+    @GetMapping("/add")
     public String getAddSpecialtyForm(Model model) {
         model.addAttribute("specialty", new Specialty());
         return "addSpecialtyForm.html";
