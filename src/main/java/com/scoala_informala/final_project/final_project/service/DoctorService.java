@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,5 +23,10 @@ public class DoctorService {
         if (doctorRepository.findDoctorByName(doctor.getName()) == null) {
             doctorRepository.save(doctor);
         }
+    }
+
+    public void deleteDoctor(Integer id) {
+        final Doctor doctor = doctorRepository.findById(id).orElseThrow(RuntimeException::new);
+        doctorRepository.delete(doctor);
     }
 }

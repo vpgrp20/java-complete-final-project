@@ -20,4 +20,9 @@ public class Specialty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String specialtyName;
+
+    @Override
+    public String toString() {
+        return specialtyName;
+    }
 }
