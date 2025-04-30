@@ -17,4 +17,10 @@ public class DoctorService {
     public List<Doctor> getAllDoctors() {
         return doctorRepository.findAll();
     }
+
+    public void addDoctor(Doctor doctor) {
+        if (doctorRepository.findDoctorByName(doctor.getName()) == null) {
+            doctorRepository.save(doctor);
+        }
+    }
 }
