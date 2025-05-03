@@ -20,7 +20,6 @@ public class InformationController {
 
         CovidInfo covidInfo = covidInfoService.getCovidInfoForRomania();
 
-        System.out.println(covidInfo);
         if (covidInfo != null) {
             model.addAttribute("totalCases", covidInfo.getTotalCases());
             model.addAttribute("lastUpdate", covidInfo.getLastUpdate());
