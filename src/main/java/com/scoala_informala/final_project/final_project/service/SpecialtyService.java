@@ -22,4 +22,8 @@ public class SpecialtyService {
             specialtyRepository.save(specialty);
         }
     }
+
+    public Specialty getSpecialtyById(int id) {
+        return specialtyRepository.findById(id).orElseThrow(() -> new RuntimeException("Specialty Not Found"));
+    }
 }

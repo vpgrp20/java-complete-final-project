@@ -50,4 +50,13 @@ public class UserService implements UserDetailsService {
 
         return foundUser;
     }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User with username " + username + " not found."));
+    }
+
+    public Patient findPatientByUser(User user) {
+        int patientId = user.getId();
+        return patientRepository.findById(patientId).orElseThrow(() -> new RuntimeException("Patient with id " + patientId + " not found."));
+    }
 }
