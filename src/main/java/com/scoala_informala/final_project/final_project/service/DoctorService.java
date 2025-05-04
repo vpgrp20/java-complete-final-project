@@ -1,6 +1,5 @@
 package com.scoala_informala.final_project.final_project.service;
 
-
 import com.scoala_informala.final_project.final_project.model.Doctor;
 import com.scoala_informala.final_project.final_project.model.Specialty;
 import com.scoala_informala.final_project.final_project.repository.DoctorRepository;
