@@ -65,6 +65,7 @@ public class AppointmentController {
             redirectAttributes.addFlashAttribute("errorMessage", "Please select a date for your appointment.");
             return "redirect:/appointment/dates/" + doctorId;
         }
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userService.findByUsername(username);
