@@ -26,4 +26,6 @@ public class Doctor {
     private String name;
     @ManyToOne
     private Specialty specialty;
+    @Pattern(regexp = ".+@.+\\..+$")
+    private String emailAddress;
 }

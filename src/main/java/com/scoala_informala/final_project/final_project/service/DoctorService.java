@@ -37,4 +37,11 @@ public class DoctorService {
     public Doctor getDoctorById(int id) {
         return doctorRepository.findById(id).orElseThrow(() -> new RuntimeException("Doctor not found"));
     }
+
+    public void updateDoctor(Doctor doctor) {
+        int doctorId = doctor.getId();
+        Doctor doctorToUpdate = doctorRepository.findById(doctorId).orElseThrow(() -> new RuntimeException("Doctor with id " + doctorId + " not found."));
+        doctorToUpdate.setEmailAddress(doctor.getEmailAddress());
+        doctorRepository.save(doctorToUpdate);
+    }
 }

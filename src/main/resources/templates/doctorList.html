@@ -33,21 +33,22 @@
             <tr>
                 <th>Doctor Name</th>
                 <th>Specialty</th>
+                <th>Email Address</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="doctor : ${doctors}">
                 <td th:text="${doctor.name}"></td>
                 <td th:text="${doctor.specialty}"></td>
+                <td th:text="${doctor.emailAddress}"></td>
                 <td >
-                    <form action="/">
-                        <!--                        <input type="hidden" th:value = "${customer.id}" name = "Id"/>-->
+                    <form th:action="@{/doctor/update/{id}(id=${doctor.id})}">
+                        <input type="hidden" th:value = "${doctor.id}" name = "id"/>
                         <button type="submit" value="Update" class="btn btn-outline-dark btn-sm"><i class="bi bi-person-fill-up" style="margin-right: 5px"></i>Update</button>
                     </form>
                 </td>
                 <td>
                     <form action="/doctor/delete" method="post">
-                        <!--                        <input type="hidden" th:value = "${customer.id}" name = "id"/>-->
                         <input type="hidden" th:value = "${doctor.id}" name = "id"/>
                         <button type="submit" value="Delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash-fill" style="margin-right:5px"></i>Delete</button>
                     </form>

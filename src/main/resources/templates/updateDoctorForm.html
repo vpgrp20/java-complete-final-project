@@ -8,35 +8,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <div class="d-flex flex-column align-items-center">
-
   <div class="card shadow p-3 mb-5 rounded" style="margin-top: 50px">
-
-    <h4 style="margin: 30px 0; text-align: center;">Add a new doctor</h4>
-
-    <form action="/doctor" method="post" th:object="${doctor}">
+    <h4 style="margin: 30px 0; text-align: center;">Update Doctor Email</h4>
+    <form action="/doctor/update" method="post" th:object="${doctor}">
+      <input type="hidden" id="id" th:field="*{id}">
       <label for="name">Doctor Name:</label><br>
-      <input type="text" id="name" th:field="*{name}" class="form-control bg-dark text-white text-start"><br>
-      <p th:if="${#fields.hasErrors('name')}" style="color:red"> Invalid name</p>
-
+      <input type="text" id="name" th:field="*{name}" class="form-control bg-secondary text-white text-start" readonly><br>
       <label for="emailAddress">Email Address:</label><br>
       <input type="text" id="emailAddress" th:field="*{emailAddress}" class="form-control bg-dark text-white text-start"><br>
       <p th:if="${#fields.hasErrors('emailAddress')}" style="color:red"> Invalid email address</p>
-
-      <label for="specialty">Specialty:</label>
-      <select class="form-control" id="specialty" th:field="*{specialty}">
-        <option value="" disabled selected>Select a Specialty</option>
-        <option th:each="specialty : ${specialtyList}" th:value="${specialty.id}" th:text="${specialty.specialtyName}"></option>
-      </select>
-
-      <div class="d-flex flex-row justify-content-between" style="margin-top:20px">
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='/'"><i class="bi bi-arrow-left" style="margin-right:5px"></i>Home</button>
-        <input type="submit" value="Create" class="btn btn-success">
+      <div class="d-flex flex-row justify-content-between" style="margin-top: 20px">
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='/doctor/all'">
+          <i class="bi bi-arrow-left" style="margin-right: 5px"></i>Cancel
+        </button>
+        <input type="submit" value="Update" class="btn btn-success">
       </div>
     </form>
-
   </div>
-
 </div>
-
 </body>
 </html>
