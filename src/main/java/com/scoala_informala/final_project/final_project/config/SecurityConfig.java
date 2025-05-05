@@ -17,22 +17,28 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(c -> c.disable())
-                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(Customizer.withDefaults())
 //                .formLogin(Customizer.withDefaults())
                 .formLogin(form -> form
                         .defaultSuccessUrl("/login/post-login", true)
                         .permitAll()
                 )
                 .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers("/").permitAll()
-//                        .requestMatchers("/info").permitAll()
-//                        .requestMatchers("/contact-us").permitAll()
-//                        .requestMatchers("/appointment/specialties").hasRole("PATIENT")
-//                        .requestMatchers("/appointment/book").hasRole("PATIENT")
-//                        .requestMatchers("/doctor/**").hasRole("ADMIN")
-//                        .requestMatchers("/specialty/**").hasRole("ADMIN")
-//                        .requestMatchers("/patient/**").hasRole("ADMIN")
-                        .anyRequest().permitAll()
+                        .requestMatchers("/static/**").permitAll()
+                        .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/style.css").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/logout").permitAll()
+                        .requestMatchers("/info").permitAll()
+                        .requestMatchers("/contact-us").permitAll()
+                        .requestMatchers("/appointment/specialties").hasRole("PATIENT")
+                        .requestMatchers("/appointment/book").hasRole("PATIENT")
+                        .requestMatchers("/doctor/**").hasRole("ADMIN")
+                        .requestMatchers("/specialty/**").hasRole("ADMIN")
+                        .requestMatchers("/patient/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 );
         return http.build();
     }
