@@ -37,7 +37,7 @@ public class DoctorController {
             return "addDoctorForm.html";
         }
         doctorService.addDoctor(doctor);
-        return "redirect:/";
+        return "redirect:/doctor/all";
     }
 
     @GetMapping("/all")

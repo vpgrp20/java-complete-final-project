@@ -25,7 +25,13 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authorize -> authorize
 //                        .requestMatchers("/").permitAll()
-//                        .anyRequest().authenticated()
+//                        .requestMatchers("/info").permitAll()
+//                        .requestMatchers("/contact-us").permitAll()
+//                        .requestMatchers("/appointment/specialties").hasRole("PATIENT")
+//                        .requestMatchers("/appointment/book").hasRole("PATIENT")
+//                        .requestMatchers("/doctor/**").hasRole("ADMIN")
+//                        .requestMatchers("/specialty/**").hasRole("ADMIN")
+//                        .requestMatchers("/patient/**").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 );
         return http.build();
