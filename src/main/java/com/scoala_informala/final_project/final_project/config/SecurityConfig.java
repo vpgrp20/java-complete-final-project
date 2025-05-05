@@ -18,7 +18,11 @@ public class SecurityConfig {
         http
                 .csrf(c -> c.disable())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
+//                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                        .defaultSuccessUrl("/login/post-login", true)
+                        .permitAll()
+                )
                 .authorizeHttpRequests(authorize -> authorize
 //                        .requestMatchers("/").permitAll()
 //                        .anyRequest().authenticated()
