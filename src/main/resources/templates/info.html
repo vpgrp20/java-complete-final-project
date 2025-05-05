@@ -10,13 +10,15 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow p-3 mb-5 rounded">
-        <h2 class="text-center mb-4">COVID-19 Information for Romania</h2>
+        <h2 class="text-center mb-4">COVID-19 and Clinic Information</h2>
         <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
           <p th:text="${errorMessage}"></p>
         </div>
         <div th:unless="${errorMessage}">
           <p><strong>Total Cases:</strong> <span th:text="${totalCases}"></span></p>
           <p><strong>Last Updated:</strong> <span th:text="${lastUpdate}"></span></p>
+          <p><strong>Most Booked Doctor:</strong> <span th:text="${mostBookedDoctor != null ? mostBookedDoctor.name : 'No doctors found'}"></span></p>
+          <p><strong>Most Booked Specialty:</strong> <span th:text="${mostBookedSpecialty != null ? mostBookedSpecialty.specialtyName : 'No specialties found'}"></span></p>
         </div>
       </div>
     </div>
