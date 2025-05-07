@@ -32,8 +32,7 @@ public class RegisterController {
         }
 
         try {
-            final User registeredUser = userService.registerUser(user.getUsername(), user.getPassword());
-            userService.createPatient(registeredUser, name, phoneNumber);
+            final User registeredUser = userService.registerUser(user.getUsername(), user.getPassword(), name, phoneNumber);
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "registerForm";

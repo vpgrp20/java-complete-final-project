@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
     private final SecurityConfig securityConfig;
 
     @Transactional
-    public User registerUser(String username, String password) {
+    public User registerUser(String username, String password, String patientName, String phoneNumber) {
 
         if (userRepository.findByUsername(username).isPresent()) {
             throw new IllegalArgumentException("Username already exists");
@@ -31,11 +31,11 @@ public class UserService implements UserDetailsService {
         user.setUsername(username);
         user.setPassword(securityConfig.delegatingPasswordEncoder().encode(password));
         user.setRole("ROLE_PATIENT");
+        createPatient(user, patientName, phoneNumber);
         return userRepository.save(user);
     }
 
-    @Transactional
-    public Patient createPatient(User user, String name, String phoneNumber) {
+    private Patient createPatient(User user, String name, String phoneNumber) {
         Patient patient = new Patient();
         patient.setUser(user);
         patient.setName(name);
